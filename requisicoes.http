@@ -1,0 +1,19 @@
+### Saúde da API
+GET http://localhost:3333/health
+
+### Saudação
+GET http://localhost:3333/hello/Axel
+
+### Saudação inválida (nome com 1 letra)
+GET http://localhost:3333/hello/A
+
+### Inserindo registros
+POST http://localhost:3333/eventos
+Content-Type: application/json
+
+{
+    "titulo":"Palestra sobre Careira",
+    "local":"Clube 19 de Julho",
+    "date":"2026-11-03T20:30:00",
+    "vaga":"30"
+}

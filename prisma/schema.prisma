@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// PRISMA ERD GENERATOR SIMON KNOT https://prisma-erd.simonknott.de/
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Evento {
+  id         Int         @id @default(autoincrement())
+  titulo     String
+  local      String
+  data       DateTime
+  vagas      Int
+  criadoEm   DateTime    @default(now())
+  inscricaos Inscricao[]
+}
+
+model Participante {
+  id       Int    @id @default(autoincrement())
+  nome     String
+  email    String
+  telefone String
+
+  inscricaos Inscricao[]
+}
+
+model Inscricao {
+  id             Int          @id @default(autoincrement())
+  eventoId       Int
+  participanteId Int
+  evento         Evento       @relation(fields: [eventoId], references: [id])
+  participante   Participante @relation(fields: [participanteId], references: [id])
+}

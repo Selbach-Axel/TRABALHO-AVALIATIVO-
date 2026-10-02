@@ -1,0 +1,9 @@
+-- CreateTable
+CREATE TABLE "Evento" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "titulo" TEXT NOT NULL,
+    "local" TEXT NOT NULL,
+    "data" DATETIME NOT NULL,
+    "vagas" INTEGER NOT NULL,
+    "criadoEm" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
